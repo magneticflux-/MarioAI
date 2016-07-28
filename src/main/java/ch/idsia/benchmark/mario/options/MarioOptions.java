@@ -22,14 +22,6 @@ public class MarioOptions {
     private static Map<String, Object> options;
     private static MarioOptions _instance = new MarioOptions();
 
-    static {
-        // force enum initialization ... otherwise, respective enum constructors need not to be invoked and we would not be able to parse arguments
-        BoolOption.AI_PUNCTUAL_JUDGE.name();
-        IntOption.AI_ENTITY_GENERALIZATION_ZLEVEL.name();
-        FloatOption.SIMULATION_GRAVITY_CREATURES.name();
-        StringOption.LEVEL_CREATURES.name();
-    }
-
     private Map<BoolOption, Boolean> bools = new HashMap<>();
     private Map<IntOption, Integer> ints = new HashMap<>();
     private Map<FloatOption, Float> floats = new HashMap<>();
@@ -471,5 +463,11 @@ public class MarioOptions {
 
     }
 
-
+    static {
+        // force enum initialization ... otherwise, respective enum constructors need not to be invoked and we would not be able to parse arguments
+        BoolOption.AI_PUNCTUAL_JUDGE.name();
+        IntOption.AI_ENTITY_GENERALIZATION_ZLEVEL.name();
+        FloatOption.SIMULATION_GRAVITY_CREATURES.name();
+        StringOption.LEVEL_CREATURES.name();
+    }
 }
