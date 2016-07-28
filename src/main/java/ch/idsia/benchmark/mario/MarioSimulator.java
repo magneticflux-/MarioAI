@@ -29,6 +29,7 @@ package ch.idsia.benchmark.mario;
 
 import ch.idsia.agents.IAgent;
 import ch.idsia.agents.controllers.keyboard.CheaterKeyboardAgent;
+import ch.idsia.benchmark.mario.engine.generalization.Enemy;
 import ch.idsia.benchmark.mario.engine.input.MarioInput;
 import ch.idsia.benchmark.mario.environments.IEnvironment;
 import ch.idsia.benchmark.mario.environments.MarioEnvironment;
@@ -77,8 +78,8 @@ public class MarioSimulator {
     }
 
     public static void main(String[] args) {
-        String options = FastOpts.VIS_ON_2X + " fps 30 rfw 13 rfh 13 mm 2" //+ FastOpts.L_ENEMY(Enemy.GOOMBA, Enemy.GREEN_KOOPA, Enemy.GREEN_KOOPA_WINGED, Enemy.RED_KOOPA)
-                + FastOpts.L_RANDOM_SEED(0) + FastOpts.AI_ZL_0_0 + FastOpts.L_LENGTH(4096) + FastOpts.L_DEAD_ENDS_OFF + FastOpts.L_HIDDEN_BLOCKS_ON + FastOpts.S_TIME_LIMIT_200;
+        String options = FastOpts.VIS_ON_2X + " fps 30 rfw 21 rfh 21 mm 2" + FastOpts.L_ENEMY(Enemy.GOOMBA, Enemy.GREEN_KOOPA, Enemy.GREEN_KOOPA_WINGED, Enemy.RED_KOOPA)
+                + FastOpts.L_RANDOM_SEED(0) + FastOpts.AI_ZL_1_1 + FastOpts.L_LENGTH(4096) + FastOpts.L_DEAD_ENDS_OFF + FastOpts.L_HIDDEN_BLOCKS_ON + FastOpts.S_TIME_LIMIT_800;
         MarioSimulator simulator = new MarioSimulator(options);
 
         IAgent agent = new CheaterKeyboardAgent();
