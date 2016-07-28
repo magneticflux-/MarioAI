@@ -28,7 +28,6 @@
 package ch.idsia.benchmark.mario.engine;
 
 import ch.idsia.benchmark.mario.engine.input.MarioInput;
-import ch.idsia.benchmark.mario.engine.input.MarioKey;
 import ch.idsia.tools.ReplayerOptions;
 
 import java.io.*;
@@ -48,7 +47,7 @@ import java.util.zip.ZipOutputStream;
 public class Recorder {
     boolean lastRecordingState = false;
     private ZipOutputStream zos;
-    private Queue<ReplayerOptions.Interval> chunks = new LinkedList<ReplayerOptions.Interval>();
+    private Queue<ReplayerOptions.Interval> chunks = new LinkedList<>();
     private ReplayerOptions.Interval chunk;
 
     private ByteArrayOutputStream byteOut;
@@ -110,9 +109,7 @@ public class Recorder {
         byte action = 0;
 
         boolean[] bo = new boolean[6];
-        for (MarioKey pressed : input.getPressed()) {
-            if (pressed.getCode() >= 0 && pressed.getCode() < bo.length) bo[pressed.getCode()] = true;
-        }
+        input.getPressed().stream().filter(pressed -> pressed.getCode() >= 0 && pressed.getCode() < bo.length).forEach(pressed -> bo[pressed.getCode()] = true);
 
         for (int i = 0; i < bo.length; i++)
             if (bo[i])

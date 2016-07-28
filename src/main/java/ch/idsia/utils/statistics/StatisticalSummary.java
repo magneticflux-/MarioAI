@@ -119,7 +119,7 @@ public class StatisticalSummary implements java.io.Serializable {
         StatisticalSummary ts2 = new StatisticalSummary();
         for (int i = 0; i < 100; i++) {
             ts1.add(i / 10);
-            ts2.add(i / 10 + new Double(args[0]).doubleValue());
+            ts2.add(i / 10 + new Double(args[0]));
         }
 
         System.out.println(ts1);
@@ -283,8 +283,8 @@ public class StatisticalSummary implements java.io.Serializable {
     }
 
     public void add(double[] d) {
-        for (int i = 0; i < d.length; i++) {
-            add(d[i]);
+        for (double aD : d) {
+            add(aD);
         }
     }
 

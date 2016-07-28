@@ -194,7 +194,7 @@ public class TileGeneralizer {
                     case (-107):
                     case (-106):
                     case 1: // hidden block
-                    case (15): // Sparcle, irrelevant
+                    case (15): // Sparkle, irrelevant
                         return Tile.NOTHING;
                     case (34): // coins
                         return Tile.COIN_ANIM;
@@ -220,7 +220,7 @@ public class TileGeneralizer {
                 }
                 return Tile.SOMETHING; // everything else is "something", so it is 1
         }
-        System.err.println("Unkown ZLevel Z" + zLevel);
+        System.err.println("Unknown ZLevel Z" + zLevel);
 
         throw new RuntimeException("Invalid ZLevel[" + zLevel + "], a tile cannot be interpreted. Have you correctly set up your zLevel for the scene in your agent?");
     }

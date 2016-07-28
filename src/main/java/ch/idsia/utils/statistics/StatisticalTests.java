@@ -48,8 +48,7 @@ public class StatisticalTests {
 
     public static double sumSquareDiff(double[] x, double mean) {
         double tot = 0.0;
-        for (int i = 0; i < x.length; i++)
-            tot += sqr(x[i] - mean);
+        for (double aX : x) tot += sqr(aX - mean);
         return tot;
     }
 
@@ -64,8 +63,7 @@ public class StatisticalTests {
 
     public static double sumSquare(double[] x) {
         double tot = 0.0;
-        for (int i = 0; i < x.length; i++)
-            tot += x[i] * x[i];
+        for (double aX : x) tot += aX * aX;
         return tot;
     }
 

@@ -320,7 +320,7 @@ public class FastOpts {
     /**
      * Level will be generated as 'length'-tile long.
      *
-     * @param lenght
+     * @param length
      * @return
      */
     public static String L_LENGTH(int length) {

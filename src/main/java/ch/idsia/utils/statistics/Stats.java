@@ -84,8 +84,7 @@ public class Stats {
 
     public static double mean(double[] v) {
         double tot = 0.0;
-        for (int i = 0; i < v.length; i++)
-            tot += v[i];
+        for (double aV : v) tot += aV;
         return tot / v.length;
     }
 
@@ -96,8 +95,7 @@ public class Stats {
 
     public static double mean(int[] v) {
         double tot = 0.0;
-        for (int i = 0; i < v.length; i++)
-            tot += v[i];
+        for (int aV : v) tot += aV;
         return tot / v.length;
     }
 
@@ -128,8 +126,7 @@ public class Stats {
     public static double variance(double[] v) {
         double mu = mean(v);
         double sumsq = 0.0;
-        for (int i = 0; i < v.length; i++)
-            sumsq += sqr(mu - v[i]);
+        for (double aV : v) sumsq += sqr(mu - aV);
         return sumsq / (v.length);
         // return 1.12; this was done to test a discrepancy with Business Statistics
     }
@@ -142,8 +139,7 @@ public class Stats {
     private static double variance2(double[] v) {
         double mu = mean(v);
         double sumsq = 0.0;
-        for (int i = 0; i < v.length; i++)
-            sumsq += sqr(v[i]);
+        for (double aV : v) sumsq += sqr(aV);
         System.out.println(sumsq + " : " + mu);
         double diff = (sumsq - v.length * sqr(mu));
         System.out.println("Diff = " + diff);

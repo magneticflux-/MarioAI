@@ -15,7 +15,7 @@ public class EvaluationInfos {
     public double avgTimedout;
     public int totalTimeSpent;
     public double avgTimeSpent;
-    private List<EvaluationInfo> results = new ArrayList<EvaluationInfo>();
+    private List<EvaluationInfo> results = new ArrayList<>();
 
     public List<EvaluationInfo> getResults() {
         return results;
@@ -55,9 +55,7 @@ public class EvaluationInfos {
     }
 
     public void addResults(List<EvaluationInfo> results) {
-        for (EvaluationInfo info : results) {
-            addResult(info);
-        }
+        results.forEach(this::addResult);
     }
 
     public String getCSVHeader() {

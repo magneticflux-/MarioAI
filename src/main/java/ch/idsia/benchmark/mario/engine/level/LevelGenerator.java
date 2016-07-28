@@ -1049,13 +1049,10 @@ public class LevelGenerator {
                         }
                     }
                 }
-                if (onlyHB) {
-                    hb = true;
-                } else {
-                    hb = globalRandom.nextInt(4) == 0;// globalRandom.nextInt(3)
-                    // ==
-                    // globalRandom.nextInt(3);
-                }
+                hb = onlyHB || globalRandom.nextInt(4) == 0;
+// globalRandom.nextInt(3)
+// ==
+// globalRandom.nextInt(3);
             }
 
             // if (creaturesRandom.nextInt(35) > levelDifficulty + 1)

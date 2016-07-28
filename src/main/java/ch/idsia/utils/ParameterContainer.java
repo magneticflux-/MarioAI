@@ -102,11 +102,11 @@ public class ParameterContainer {
     private static List<String> allowedOptions = null;
 
     private static HashMap<String, String> defaultOptionsHashMap = null;
-    protected HashMap<String, String> optionsHashMap = new HashMap<String, String>();
+    protected HashMap<String, String> optionsHashMap = new HashMap<>();
 
     public ParameterContainer() {
         if (allowedOptions == null) {
-            allowedOptions = new ArrayList<String>();
+            allowedOptions = new ArrayList<>();
             Collections.addAll(allowedOptions, allowed);
         }
         InitDefaults();
@@ -114,7 +114,7 @@ public class ParameterContainer {
 
     public static void InitDefaults() {
         if (defaultOptionsHashMap == null) {
-            defaultOptionsHashMap = new HashMap<String, String>();
+            defaultOptionsHashMap = new HashMap<>();
             defaultOptionsHashMap.put("-ag", "ch.idsia.agents.controllers.keyboard.KeyboardAgent");
             defaultOptionsHashMap.put("-echo", "off"); // defaultOptionsHashMap.put("-echo","off");
             defaultOptionsHashMap.put("-ewf", "on"); // defaultOptionsHashMap.put("-exitWhenFinished","off");

@@ -127,7 +127,7 @@ public final class MarioEnvironment implements IEnvironment {
             entityField = new List[mario.receptiveFieldHeight][mario.receptiveFieldWidth];
             for (int row = 0; row < mario.receptiveFieldHeight; ++row) {
                 for (int col = 0; col < mario.receptiveFieldWidth; ++col) {
-                    entityField[row][col] = new ArrayList<Entity>();
+                    entityField[row][col] = new ArrayList<>();
                 }
             }
             this.prevRFH = mario.receptiveFieldHeight;
@@ -160,7 +160,7 @@ public final class MarioEnvironment implements IEnvironment {
         } else
             levelScene.reset();
 
-        entities = new ArrayList<Entity>();
+        entities = new ArrayList<>();
 
         // create recorder
         if (SystemOptions.isReplayFileName()) {
@@ -245,9 +245,9 @@ public final class MarioEnvironment implements IEnvironment {
     }
 
     private void computeEntities(int ZLevel) {
-        for (int w = 0; w < entityField.length; w++)
+        for (List<Entity>[] anEntityField : entityField)
             for (int h = 0; h < entityField[0].length; h++)
-                entityField[w][h].clear();
+                anEntityField[h].clear();
         entities.clear();
         for (Sprite sprite : levelScene.sprites) {
             if (sprite.isDead() || sprite.kind == levelScene.mario.kind)
@@ -267,7 +267,7 @@ public final class MarioEnvironment implements IEnvironment {
 
                 EntityType entityKind = EntityGeneralizer.generalize(sprite.kind, ZLevel);
 
-                Entity<Sprite> entity = new Entity<Sprite>(sprite, entityKind, col - mario.egoCol, row - mario.egoRow, levelScene.mario.x - sprite.x, levelScene.mario.y - sprite.y, sprite.y);
+                Entity<Sprite> entity = new Entity<>(sprite, entityKind, col - mario.egoCol, row - mario.egoRow, levelScene.mario.x - sprite.x, levelScene.mario.y - sprite.y, sprite.y);
 
                 entityField[row][col].add(entity);
 
@@ -281,7 +281,7 @@ public final class MarioEnvironment implements IEnvironment {
     }
 
     public List<String> getObservationStrings(boolean Enemies, boolean LevelMap) {
-        List<String> ret = new ArrayList<String>();
+        List<String> ret = new ArrayList<>();
         if (levelScene.level != null && levelScene.mario != null) {
             ret.add("Total levelScene length = " + levelScene.level.length);
             ret.add("Total levelScene height = " + levelScene.level.height);
@@ -311,10 +311,10 @@ public final class MarioEnvironment implements IEnvironment {
             Tile[][] levelScene = getTileField();
             if (LevelMap) {
                 ret.add("~ZLevel: Z" + mario.zLevelTiles + " map:\n");
-                for (int x = 0; x < levelScene.length; ++x) {
+                for (Tile[] aLevelScene : levelScene) {
                     String tmpData = "";
                     for (int y = 0; y < levelScene[0].length; ++y)
-                        tmpData += levelSceneCellToString(levelScene[x][y].getCode());
+                        tmpData += levelSceneCellToString(aLevelScene[y].getCode());
                     ret.add(tmpData);
                 }
             }
@@ -323,12 +323,12 @@ public final class MarioEnvironment implements IEnvironment {
             if (Enemies) {
                 enemiesObservation = getEntityField();
                 ret.add("~ZLevel: Z" + mario.zLevelEntities + " Enemies Observation:\n");
-                for (int x = 0; x < enemiesObservation.length; x++) {
+                for (List<Entity>[] anEnemiesObservation : enemiesObservation) {
                     String tmpData = "";
                     for (int y = 0; y < enemiesObservation[0].length; y++) {
                         // if (x >=0 && x <= level.xExit)
-                        if (enemiesObservation[x][y].size() > 0) {
-                            tmpData += enemiesObservation[x][y].get(0).type.getCode();
+                        if (anEnemiesObservation[y].size() > 0) {
+                            tmpData += anEnemiesObservation[y].get(0).type.getCode();
                         } else {
                             tmpData += EntityType.NOTHING.getCode();
                         }

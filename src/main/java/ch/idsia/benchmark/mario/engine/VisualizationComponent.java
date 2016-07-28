@@ -255,17 +255,14 @@ public class VisualizationComponent extends JComponent {
         }
         // g.drawImage(Art.background, 0, 0, null);
 
-        for (int i = 0; i < bgLayer.length; i++) {
-            bgLayer[i].setCam(xCam, yCam);
-            bgLayer[i].render(g); // levelScene.
+        for (BgRenderer aBgLayer : bgLayer) {
+            aBgLayer.setCam(xCam, yCam);
+            aBgLayer.render(g); // levelScene.
         }
 
         g.translate(-xCam, -yCam);
 
-        for (Sprite sprite : marioEnvironment.getLevelScene().sprites)
-            // levelScene.
-            if (sprite.layer == 0)
-                sprite.render(g);
+        marioEnvironment.getLevelScene().sprites.stream().filter(sprite -> sprite.layer == 0).forEach(sprite -> sprite.render(g));
 
         g.translate(xCam, yCam);
 

@@ -30,10 +30,10 @@ public class MarioOptions {
         StringOption.LEVEL_CREATURES.name();
     }
 
-    private Map<BoolOption, Boolean> bools = new HashMap<BoolOption, Boolean>();
-    private Map<IntOption, Integer> ints = new HashMap<IntOption, Integer>();
-    private Map<FloatOption, Float> floats = new HashMap<FloatOption, Float>();
-    private Map<StringOption, String> strings = new HashMap<StringOption, String>();
+    private Map<BoolOption, Boolean> bools = new HashMap<>();
+    private Map<IntOption, Integer> ints = new HashMap<>();
+    private Map<FloatOption, Float> floats = new HashMap<>();
+    private Map<StringOption, String> strings = new HashMap<>();
 
     private MarioOptions() {
     }
@@ -80,7 +80,7 @@ public class MarioOptions {
     public static void read(String... args) {
         if (args == null) return;
 
-        List<String> processedArgs = new ArrayList<String>();
+        List<String> processedArgs = new ArrayList<>();
         for (String arg : args) {
             String[] split = arg.split(" ");
             for (String oneArg : split) {
@@ -317,7 +317,7 @@ public class MarioOptions {
             this.param = param;
             this.defaultValue = defaultValue;
             this.help = help;
-            if (options == null) options = new HashMap<String, Object>();
+            if (options == null) options = new HashMap<>();
             options.put(param, this);
         }
 
@@ -355,7 +355,7 @@ public class MarioOptions {
             this.param = param;
             this.defaultValue = defaultValue;
             this.help = help;
-            if (options == null) options = new HashMap<String, Object>();
+            if (options == null) options = new HashMap<>();
             options.put(param, this);
         }
 
@@ -411,7 +411,7 @@ public class MarioOptions {
             this.param = param;
             this.defaultValue = defaultValue;
             this.help = help;
-            if (options == null) options = new HashMap<String, Object>();
+            if (options == null) options = new HashMap<>();
             options.put(param, this);
         }
 
@@ -453,7 +453,7 @@ public class MarioOptions {
             this.param = param;
             this.defaultValue = defaultValue;
             this.help = help;
-            if (options == null) options = new HashMap<String, Object>();
+            if (options == null) options = new HashMap<>();
             options.put(param, this);
         }
 

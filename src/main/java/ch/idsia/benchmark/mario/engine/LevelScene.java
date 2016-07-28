@@ -55,10 +55,10 @@ public final class LevelScene implements SpriteContext {
     public static int killedCreaturesByStomp;
     public static int killedCreaturesByShell;
     private static boolean onLadder = false;
-    final public List<Sprite> sprites = new ArrayList<Sprite>();
-    final private List<Sprite> spritesToAdd = new ArrayList<Sprite>();
-    final private List<Sprite> spritesToRemove = new ArrayList<Sprite>();
-    final private List<Float> enemiesFloatsList = new ArrayList<Float>();
+    final public List<Sprite> sprites = new ArrayList<>();
+    final private List<Sprite> spritesToAdd = new ArrayList<>();
+    final private List<Sprite> spritesToRemove = new ArrayList<>();
+    final private List<Float> enemiesFloatsList = new ArrayList<>();
     final private float[] marioFloatPos = new float[2];
     final private int[] marioState = new int[11];
     public Level level;
@@ -68,8 +68,8 @@ public final class LevelScene implements SpriteContext {
     public int startTime = 0;
     public String memo = "";
     public int fireballsOnScreen = 0;
-    List<Shell> shellsToCheck = new ArrayList<Shell>();
-    List<Fireball> fireballsToCheck = new ArrayList<Fireball>();
+    List<Shell> shellsToCheck = new ArrayList<>();
+    List<Fireball> fireballsToCheck = new ArrayList<>();
     private int timeLeft;
 
     // public int getTimeLimit() { return timeLimit; }
@@ -175,20 +175,18 @@ public final class LevelScene implements SpriteContext {
 
         fireballsOnScreen = 0;
 
-        for (Sprite sprite : sprites) {
-            if (sprite != mario) {
-                float xd = sprite.x - xCam;
-                float yd = sprite.y - yCam;
-                if (xd < -64 || xd > SimulatorOptions.VISUAL_COMPONENT_WIDTH + 64
-                        || yd < -64
-                        || yd > SimulatorOptions.VISUAL_COMPONENT_HEIGHT + 64) {
-                    removeSprite(sprite);
-                } else {
-                    if (sprite instanceof Fireball)
-                        fireballsOnScreen++;
-                }
+        sprites.stream().filter(sprite -> sprite != mario).forEach(sprite -> {
+            float xd = sprite.x - xCam;
+            float yd = sprite.y - yCam;
+            if (xd < -64 || xd > SimulatorOptions.VISUAL_COMPONENT_WIDTH + 64
+                    || yd < -64
+                    || yd > SimulatorOptions.VISUAL_COMPONENT_HEIGHT + 64) {
+                removeSprite(sprite);
+            } else {
+                if (sprite instanceof Fireball)
+                    fireballsOnScreen++;
             }
-        }
+        });
 
         tickCount++;
         level.tick();
@@ -246,8 +244,7 @@ public final class LevelScene implements SpriteContext {
                 }
             }
 
-        for (Sprite sprite : sprites)
-            sprite.tick();
+        sprites.forEach(Sprite::tick);
 
         byte levelElement = level.getBlock(mario.mapX, mario.mapY);
         if (levelElement == (byte) (13 + 3 * 16)
@@ -260,31 +257,22 @@ public final class LevelScene implements SpriteContext {
             mario.setInLadderZone(false);
         }
 
-        for (Sprite sprite : sprites)
-            sprite.collideCheck();
+        sprites.forEach(Sprite::collideCheck);
 
         for (Shell shell : shellsToCheck) {
-            for (Sprite sprite : sprites) {
-                if (sprite != shell && !shell.dead) {
-                    if (sprite.shellCollideCheck(shell)) {
-                        if (mario.carried == shell && !shell.dead) {
-                            mario.carried = null;
-                            mario.setRacoon(false);
-                            // System.out.println("sprite = " + sprite);
-                            shell.die();
-                            ++this.killedCreaturesTotal;
-                        }
-                    }
-                }
-            }
+            // System.out.println("sprite = " + sprite);
+            sprites.stream().filter(sprite -> sprite != shell && !shell.dead).filter(sprite -> sprite.shellCollideCheck(shell)).filter(sprite -> mario.carried == shell && !shell.dead).forEach(sprite -> {
+                mario.carried = null;
+                mario.setRacoon(false);
+                // System.out.println("sprite = " + sprite);
+                shell.die();
+                ++this.killedCreaturesTotal;
+            });
         }
         shellsToCheck.clear();
 
         for (Fireball fireball : fireballsToCheck)
-            for (Sprite sprite : sprites)
-                if (sprite != fireball && !fireball.dead)
-                    if (sprite.fireballCollideCheck(fireball))
-                        fireball.die();
+            sprites.stream().filter(sprite -> sprite != fireball && !fireball.dead).filter(sprite -> sprite.fireballCollideCheck(fireball)).forEach(sprite -> fireball.die());
         fireballsToCheck.clear();
 
         sprites.addAll(0, spritesToAdd);

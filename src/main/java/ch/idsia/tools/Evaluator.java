@@ -45,7 +45,7 @@ public class Evaluator implements Runnable {
     Thread thisThread = null;
 //    EvaluationOptions evaluationOptions;
 
-    private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>();
+    private List<EvaluationInfo> evaluationSummary = new ArrayList<>();
 
 //    private void evaluateServerMode()
 //    {
@@ -211,7 +211,7 @@ public class Evaluator implements Runnable {
 //    }
 
     public void reset() {
-        evaluationSummary = new ArrayList<EvaluationInfo>();
+        evaluationSummary = new ArrayList<>();
     }
 
 //    public Evaluator(EvaluationOptions evaluationOptions)

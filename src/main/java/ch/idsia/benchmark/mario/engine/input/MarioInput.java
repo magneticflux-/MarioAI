@@ -1,17 +1,11 @@
 package ch.idsia.benchmark.mario.engine.input;
 
-import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class MarioInput {
 
-    private Set<MarioKey> pressed = new TreeSet<MarioKey>(new Comparator<MarioKey>() {
-        @Override
-        public int compare(MarioKey o1, MarioKey o2) {
-            return o1.getCode() - o2.getCode();
-        }
-    });
+    private Set<MarioKey> pressed = new TreeSet<>((o1, o2) -> o1.getCode() - o2.getCode());
 
     public Set<MarioKey> getPressed() {
         return pressed;

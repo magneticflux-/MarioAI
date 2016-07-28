@@ -176,9 +176,9 @@ public final class EvaluationInfo implements Cloneable {
                 for (int j = 0; j < marioTrace[0].length; ++j)
 
                 {
-                    for (int i = 0; i < marioTrace.length; ++i) {
-                        System.out.print(spaceFormat(marioTrace[i][j]));
-                        pw.print(spaceFormat(marioTrace[i][j]));
+                    for (int[] aMarioTrace : marioTrace) {
+                        System.out.print(spaceFormat(aMarioTrace[j]));
+                        pw.print(spaceFormat(aMarioTrace[j]));
                     }
                     System.out.println();
                     pw.println();

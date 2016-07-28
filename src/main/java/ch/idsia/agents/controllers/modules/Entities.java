@@ -42,7 +42,7 @@ public class Entities {
 
     protected List<Entity> getEntities(int mapX, int mapY) {
         if (mapY < 0 || mapY >= entityField.length || mapX < 0 || mapX >= entityField[0].length)
-            return new ArrayList<Entity>();
+            return new ArrayList<>();
         return entityField[mapY][mapX];
     }
 

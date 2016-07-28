@@ -8,8 +8,8 @@ import java.util.List;
 
 public class MarioRunResults extends EvaluationInfos {
 
-    private List<MarioConfig> configs = new ArrayList<MarioConfig>();
-    private List<MarioRunResult> runResults = new ArrayList<MarioRunResult>();
+    private List<MarioConfig> configs = new ArrayList<>();
+    private List<MarioRunResult> runResults = new ArrayList<>();
 
     public void addRunResults(MarioRunResult... results) {
         for (MarioRunResult result : results) {

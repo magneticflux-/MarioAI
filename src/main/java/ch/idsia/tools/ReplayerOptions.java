@@ -43,8 +43,8 @@ import java.util.regex.Pattern;
  * Package: ch.idsia.tools
  */
 public class ReplayerOptions {
-    private Queue<Interval> chunks = new LinkedList<Interval>();
-    private Queue<String> replays = new LinkedList<String>();
+    private Queue<Interval> chunks = new LinkedList<>();
+    private Queue<String> replays = new LinkedList<>();
     private String regex = "[a-zA-Z_0-9.-]+(;\\d+:\\d+)*";
 
     public ReplayerOptions(String options) {

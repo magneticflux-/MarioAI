@@ -47,7 +47,7 @@ public class RandomCreatureGenerator extends Random {
             Enemy.RED_KOOPA_WINGED.getShorthand(), Enemy.GREEN_KOOPA.getShorthand(), Enemy.GREEN_KOOPA_WINGED.getShorthand(),
             Enemy.SPIKY.getShorthand(), Enemy.SPIKY_WINGED.getShorthand(), Enemy.WAVE_GOOMBA.getShorthand()};
     private final int INFINITE = -1;
-    private HashSet<String> allowedCreatures = new HashSet<String>();
+    private HashSet<String> allowedCreatures = new HashSet<>();
     private boolean creaturesEnabled = true;
     private boolean kindByDifficulty = true;
     private int difficulty = 0;
