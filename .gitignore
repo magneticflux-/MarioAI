@@ -1,5 +1,6 @@
-/MarioAI4J/bin
-/MarioAI4J-Agents/bin
 .metadata
 .settings
 bin
+.gradle
+.idea
+build
