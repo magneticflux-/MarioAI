@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class MarioKey {
 
+    public static final Map<Integer, MarioKey> marioKeys = new HashMap<>();
+
     public static final int numberOfKeys = 6;
     /**
      * Move LEFT
@@ -40,7 +42,6 @@ public class MarioKey {
      * Fly UP - Works only if you're flying (which is a cheat).
      */
     public static final MarioKey UP = new MarioKey(5, "UP", "^^");
-    private static final Map<Integer, MarioKey> marioKeys = new HashMap<>();
     private int code;
     private String name;
     private String debug;
