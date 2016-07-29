@@ -98,7 +98,7 @@ public class MarioSimulator {
 
         System.out.println("[MarioSimulator] Initializing MarioOptions..");
 
-        MarioOptions.reset(options);
+        MarioOptions.reset(true, options);
 
         System.out.println("[MarioSimulator] Initializing the environment and the agent...");
 
